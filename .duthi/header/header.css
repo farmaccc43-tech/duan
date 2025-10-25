@@ -1,0 +1,47 @@
+/*NAV-BAR*/
+/* Hiệu ứng cho toàn bộ liên kết (nav-link) */
+.navbar-nav .nav-link {
+    color: white; /* Màu chữ mặc định */
+    font-size: 16px; /* Kích thước chữ */
+    transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover - Hiệu ứng sáng khi di chuột */
+.navbar-nav .nav-link:hover {
+    color: #74C0FC; /* Màu chữ sáng hơn */
+    background-color: rgba(255, 255, 255, 0.2); /* Hiệu ứng nền mờ */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Bóng mờ khi hover */
+    border-radius: 5px; /* Bo góc nhẹ */
+}
+
+/* Hiệu ứng cho các mục dropdown */
+.navbar-nav .dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.8); /* Nền mờ tối */
+    border: none; /* Loại bỏ viền */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover cho các mục trong dropdown */
+.navbar-nav .dropdown-item {
+    color: white; /* Màu chữ mặc định */
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover cho dropdown item */
+.navbar-nav .dropdown-item:hover {
+    color: #74C0FC; /* Màu chữ sáng hơn */
+    background-color: rgba(255, 255, 255, 0.2); /* Nền sáng khi hover */
+}
+
+/* Hiệu ứng cho nút tìm kiếm */
+.navbar .btn-outline-dark {
+    border: 2px solid #74C0FC; /* Viền xanh nhạt */
+    color: #74C0FC; /* Màu chữ xanh nhạt */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover cho nút tìm kiếm */
+.navbar .btn-outline-dark:hover {
+    background-color: #74C0FC; /* Nền xanh nhạt khi hover */
+    color: white; /* Màu chữ trắng */
+}

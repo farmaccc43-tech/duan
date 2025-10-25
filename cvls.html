@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Cổ vật lịch sử - Chuyện xưa Đà Thành</title>
+    <link rel="stylesheet" href="langstyling.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .region {padding: 20px; border-style: solid;}
+        .header {background-color: lightcyan;}
+        .navigation_menu {background-color: lightcyan; height: 50px;}
+        .content {background-color: lightsalmon; height: 300px;}
+        .footer {background-color: lightgray;}
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <a href="index.html"><img src="logo.jfif" class="logo"></a>
+        <a href="lntt.html" class="navbar-item" data-translate="lntt">Làng nghề</a>
+        <a href="skls.html" class="navbar-item" data-translate="skls">Sự kiện lịch sử</a>
+        <a href="cvls.html" class="navbar-item" data-translate="cvls">Cổ vật lịch sử</a>
+        <a href="nvls.html" class="navbar-item" data-translate="nvls">  Nhân vật lịch sử</a>
+        <a href="btls.html" class="navbar-item" data-translate="btls">Bảo tàng lịch sử</a>
+        <a href="lhtt.html" class="navbar-item" data-translate="lhtt">Lễ hội truyền thống</a> 
+        <form class="navbar-search" action="search.html" method="GET">
+            <input type="text" name="query" placeholder="Search..." class="search-input" required="">
+            <button type="submit" class="search-button">
+                <i class="fa-solid fa-magnifying-glass" style="color: #74C0FC;"></i>
+            </button>
+        </form>
+        
+        <div class="lang-menu">
+            <div class="selected-lang">
+                <span class="lang-name">Việt Nam</span>
+                <span class="lang-flag" style="background-image: url(&quot;https://flagsapi.com/VN/flat/64.png&quot;);"></span>
+            </div>
+            <ul>
+                <li class="vn">
+                    <a href="#" class="vn" data-lang="vn" onclick="changeLanguage('vi')">
+                        <span class="flag-icon" style="background-image: url('https://flagsapi.com/VN/flat/64.png');"></span>
+                        Việt Nam
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="en" data-lang="en" onclick="changeLanguage('en')">
+                        <span class="flag-icon" style="background-image: url('https://flagsapi.com/GB/flat/64.png');"></span>
+                        English
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <main>
+        <section class="hero-image">
+            <div class="hero-content">
+                <h1 class="hero-title" data-translate="hero-title">Cổ vật lịch sử</h1>
+                <p class="hero-description" data-translate="hero-description">Cùng nhau khám phá những cổ vật lịch sử đặc biệt tại Đà Nẵng nhé.</p>
+            </div>
+        </section>
+
+        <section class="main-content">
+            <h1 class="section-title" data-translate="section-title-1">Sưu tập cổ vật</h1>
+            <p class="intro-text" data-translate="intro-text"></p>
+
+            <!-- Village Cards (Image + Title) -->
+            <div class="village-cards">
+                <div class="village-card">
+                    <a href="huconap.html">
+                        <h3 data-translate="village-title-1">Hũ có nắp</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="choe.html">
+                        <h3 data-translate="village-title-2">Chóe</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="dia.html">
+                        <h3 data-translate="village-title-3">Đĩa</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="chuong.html">
+                        <h3 data-translate="village-title-4">Chuông</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="tvhpLv.html">
+                        <h3 data-translate="village-title-5">Tượng thờ "Thiên vương hàng phục Long vương"</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="kiem.html">
+                        <h3 data-translate="village-title-6">Kiếm</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="tuocuongruou.html">
+                        <h3 data-translate="village-title-7">Tước uống rượu</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="matna.html">
+                        <h3 data-translate="village-title-8">Mặt nạ</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="bdhl.html">
+                        <h3 data-translate="village-title-9">Bình đựng hương liệu</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="main-content">
+            <h1 class="section-title" data-translate="section-title-2">Đà Nẵng thời tiền sử</h1>
+
+            <!-- Village Cards (Image + Title) -->
+            <div class="village-cards">
+                <div class="village-card">
+                    <a href="banmai.html">
+                        <h3 data-translate="village-title-1">Bàn mài</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="ttttb.html">
+                        <h3 data-translate="village-title-2">Tiền Thuận trị thông bảo</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="kt2dt.html">
+                        <h3 data-translate="village-title-3">Khuyên tai hai đầu thú</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="bgkd.html">
+                        <h3 data-translate="village-title-4">Bình gốm Kendy</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="dcmn.html">
+                        <h3 data-translate="village-title-5">Dây cườm, mã não</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="main-content">
+            <h1 class="section-title" data-translate="section-title-3">Lịch sử đấu tranh cách mạng</h1>
+
+            <!-- Village Cards (Image + Title) -->
+            <div class="village-cards">
+                <div class="village-card">
+                    <a href="chong.html">
+                        <h3 data-translate="village-title-1">Chông</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="noidong.html">
+                        <h3 data-translate="village-title-2">Nồi đồng</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="ongtredungnuoc.html">
+                        <h3 data-translate="village-title-3">Ống tre đựng nước</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="minluudan.html">
+                        <h3 data-translate="village-title-4">Mìn, lựu đạn</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="main-content">
+            <h1 class="section-title" data-translate="section-title-4">Chứng tích chiến tranh</h1>
+
+            <!-- Village Cards (Image + Title) -->
+            <div class="village-cards">
+                <div class="village-card">
+                    <a href="beplo.html">
+                        <h3 data-translate="village-title-1">Bếp lò</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="maychupanh.html">
+                        <h3 data-translate="village-title-2">Máy chụp ảnh</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="totrinh.html">
+                        <h3 data-translate="village-title-3">Tờ trình</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="radio.html">
+                        <h3 data-translate="village-title-4">Radio</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="main-content">
+            <h1 class="section-title" data-translate="section-title-5">Văn hóa Việt</h1>
+
+            <!-- Village Cards (Image + Title) -->
+            <div class="village-cards">
+                <div class="village-card">
+                    <a href="vobinhdungnuoc.html">
+                        <h3 data-translate="village-title-1">Vỏ bình đựng nước</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="khay.html">
+                        <h3 data-translate="village-title-2">Khay</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="main-content">
+            <h1 class="section-title" data-translate="section-title-6">Dân tộc học</h1>
+
+            <!-- Village Cards (Image + Title) -->
+            <div class="village-cards">
+                <div class="village-card">
+                    <a href="ao.html">
+                        <h3 data-translate="village-title-1">Áo</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="khocuom.html">
+                        <h3 data-translate="village-title-2">Khố cườm</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="khen.html">
+                        <h3 data-translate="village-title-3">Khèn</h3>
+                    </a>
+                </div>
+                <div class="village-card">
+                    <a href="dantambetalui.html">
+                        <h3 data-translate="village-title-4">Đàn Tambet Alui</h3>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="row">
+            <div class="col">
+                <img src="logo.jfif" class="logo2">
+                <p>Chuyện xưa Đà Thành là trang web chuyên cung cấp thông tin dữ liệu dành cho học sinh và cộng đồng về lịch sử địa phương thành phố Đà Nẵng.</p>
+            </div>
+            <div class="col">
+                <h3 data-translate="title">Title</h3>
+                <p class="email-id"><i class="fa-regular fa-envelope"></i> chuyenxuadathanh@gmail.com</p>
+                <h4><i class="fa-solid fa-phone"></i> 0917395358</h4>
+            </div>
+            <div class="col">
+                <h3 data-translate="links-title">Liên kết</h3>
+                <ul>
+                    <li><a href="index.html" data-translate="home-link">Trang chủ</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h3 data-translate="newsletter-title">Đăng kí nhận thông báo</h3>
+                <form>
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" placeholder="Enter your Email here" required> 
+                    <button type="submit"><i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i></button>
+                </form>
+                <h3 data-translate="social-media">Theo dõi chúng tôi tại</h3>
+                <div class="social-icons">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                    <i class="fa-brands fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // Set default language to Vietnamese (vi) on page load
+    changeLanguage('vi');
+    });
+    const translations = {
+    'vi': {
+        "hero-title": "Cổ vật lịch sử",
+        "hero-description": "...",
+        "section-title": "Danh mục hiện vật",
+        "intro-text": "...",
+        "section-title-1": "Sưu tập cổ vật",
+        "village-title-1": "Hũ có nắp",
+        "village-title-2": "Chóe",
+        "village-title-3": "Đĩa",
+        "village-title-4": "Chuông",
+        "village-title-5": "Tượng thờ 'Thiên vương hàng phục Long vương'",
+        "village-title-6": "Kiếm",
+        "village-title-7": "Tước uống rượu",
+        "village-title-8": "Mặt nạ",
+        "village-title-9": "Bình đựng hương liệu",
+        "section-title-2": "Đà Nẵng thời tiền sử",
+        "village-title-1": "Bàn mài",
+        "village-title-2": "Tiền Thuận trị thông bảo",
+        "village-title-3": "Khuyên tai hai đầu thú",
+        "village-title-4": "Bình gốm Kendy",
+        "village-title-5": "Dây cườm, mã não",
+        "section-title-3": "Lịch sử đấu tranh cách mạng",
+        "village-title-1": "Chông",
+        "village-title-2": "Nồi đồng",
+        "village-title-3": "Ống tre đựng nước",
+        "village-title-4": "Mìn, lựu đạn",
+        "section-title-4": "Chứng tích chiến tranh",
+        "village-title-1": "Bếp lò",
+        "village-title-2": "Máy chụp ảnh",
+        "village-title-3": "Tờ trình",
+        "village-title-4": "Radio",
+        "section-title-5": "Văn hóa Việt",
+        "village-title-1": "Vỏ bình đựng nước",
+        "village-title-2": "Khay",
+        "section-title-6": "Dân tộc học",
+        "village-title-1": "Áo",
+        "village-title-2": "Khố cườm",
+        "village-title-3": "Khèn",
+        "village-title-4": "Đàn Tambet Alui",
+        "title": "Title",
+        "links-title": "Liên kết",
+        "home-link": "Trang chủ",
+        "newsletter-title": "Đăng kí nhận thông báo",
+        "social-media": "Theo dõi chúng tôi tại",
+        'lntt': 'Làng nghề',
+        'skls': 'Sự kiện lịch sử',
+        'cvls': 'Cổ vật lịch sử',
+        'nvls': 'Nhân vật lịch sử',
+        'btls': 'Bảo tàng lịch sử',
+        'lhtt': 'Lễ hội truyền thống'
+    },
+    'en': {
+        "hero-title": "Historical artifacts",
+        "hero-description": "...",
+        "section-title": "List of artifacts",
+        "intro-text": "...",
+        "village-title-1": "Collection of Antiquities",
+        "village-title-2": "Prehistoric Da Nang",
+        "village-title-3": "History of Revolutionary Struggle",
+        "village-title-4": "War Remnants",
+        "village-title-5": "Vietnamese Culture",
+        "village-title-6": "Ethnology",
+        "title": "Title",
+        "links-title": "Links",
+        "home-link": "Home",
+        "newsletter-title": "Sign up for notifications",
+        "social-media": "Follow Us",
+        'lntt': 'Craft Villages',
+        'skls': 'Events',
+        'cvls': 'Artifacts',
+        'nvls': 'Figures',
+        'btls': 'Museums',
+        'lhtt': 'Festivals'
+    }
+};
+
+function changeLanguage(lang) {
+    document.querySelectorAll('[data-translate]').forEach(function (element) {
+        const translationKey = element.getAttribute('data-translate');
+        if (translations[lang] && translations[lang][translationKey]) {
+            element.textContent = translations[lang][translationKey];
+        }
+    });
+
+    const langName = lang === 'vi' ? 'Việt Nam' : 'English'; // Language name based on selected language
+    document.querySelector('.lang-name').textContent = langName;
+
+    // Update flag icon
+    const flagUrl = lang === 'vi' ? 'https://flagsapi.com/VN/flat/64.png' : 'https://flagsapi.com/GB/flat/64.png';
+    document.querySelector('.lang-flag').style.backgroundImage = `url(${flagUrl})`; // Set flag image
+}
+
+    </script>
+</body>
+</html>
