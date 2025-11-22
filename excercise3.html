@@ -29,10 +29,10 @@
 <div id="giftIntro" style="max-width:700px;margin:auto;background:#fff;padding:15px;border-radius:10px;color:#444; text-align:center; font-size:18px;">
   <h2>🎁 Quà tặng hấp dẫn!</h2>
   <ul style="text-align:left;">
-    <li>≥ 140 điểm: <b>Vé Bà Nà Hills</b></li>
-    <br><li>≥ 120 điểm: <b>Vé xem Cầu Rồng phun lửa + nước</b></li>
-    <br><li>≥ 100 điểm: <b>Móc khóa Cầu Rồng</b></li>
-    <br><li>≥ 80 điểm: <b>Sticker Đà Nẵng</b></li>
+    <li>≥ 200 điểm: <b>Vé Bà Nà Hills</b></li>
+    <br><li>≥ 180 điểm: <b>Vé xem Cầu Rồng phun lửa + nước</b></li>
+    <br><li>≥ 160 điểm: <b>Móc khóa Cầu Rồng</b></li>
+    <br><li>≥ 140 điểm: <b>Sticker Đà Nẵng</b></li>
   </ul>
 </div>
 
@@ -66,81 +66,107 @@
 // DATA
 // =============================
 const questions = [
+  // --- Đời sống – ẩm thực – con người ---
   {
-    question: "Văn hóa Chămpa để lại dấu ấn lớn nhất ở di tích nào?",
-    options: ["Bà Nà", "Phố cổ", "Thánh địa Mỹ Sơn", "Cù Lao Chàm"],
-    correct: 2
-  },
-  {
-    question: "Bảo tàng điêu khắc nổi tiếng ở Đà Nẵng lưu giữ hiện vật của nền văn hóa nào?",
-    options: ["Sa Huỳnh", "Óc Eo", "Chămpa", "Khmer"],
-    correct: 2
-  },
-  {
-    question: "“Thành Điện Hải” gắn với sự kiện lịch sử nào?",
-    options: ["Khởi nghĩa Lam Sơn", "Kháng chiến chống Pháp đầu thế kỷ XIX", "Phong trào Cần Vương", "Khởi nghĩa Tây Sơn"],
+    question: "Người Đà Nẵng được nhận xét là:",
+    options: ["Khó tính", "Cởi mở, thân thiện", "Ít nói", "Khép kín"],
     correct: 1
   },
   {
-    question: "Cầu quay sông Hàn khánh thành năm nào?",
-    options: ["1998", "1999", "2000", "2001"],
+    question: "Nét giao tiếp đặc trưng của người Đà Nẵng:",
+    options: ["Nói vòng vo", "Ngắn gọn, thẳng thắn", "Trầm lặng", "Phô trương"],
+    correct: 1
+  },
+  {
+    question: "Món ăn nổi tiếng gắn với làng Nam Ô:",
+    options: ["Gỏi cá", "Chả bò", "Bún chả", "Bánh căn"],
+    correct: 0
+  },
+  {
+    question: "Đặc sản bánh tráng cuốn thịt heo thường ăn kèm:",
+    options: ["Mắm nêm", "Tương đen", "Mắm ruốc", "Nước tương"],
+    correct: 0
+  },
+  {
+    question: "Bánh xèo miền Trung ở Đà Nẵng có đặc điểm:",
+    options: ["Bánh to dày", "Bánh mỏng giòn", "Bánh nhân hải sản", "Bánh ngọt"],
+    correct: 1
+  },
+  {
+    question: "Người Đà Nẵng thường có thói quen sống:",
+    options: ["Nhanh, vội", "Điều độ, kỷ luật", "Bừa bộn", "Tự phát"],
+    correct: 1
+  },
+  {
+    question: "Chợ nào nổi tiếng với ẩm thực ngon – rẻ?",
+    options: ["Chợ Hàn", "Chợ Cồn", "Chợ Đầu Mối", "Chợ đêm Helio"],
+    correct: 1
+  },
+  {
+    question: "Món “mỳ Quảng” thường được ăn với:",
+    options: ["Nước dùng chan nhiều", "Gà, tôm, thịt, đậu phộng", "Bún", "Nui"],
+    correct: 1
+  },
+  {
+    question: "Người Đà Nẵng thường được đánh giá là trung thực vì:",
+    options: ["Không nói dối", "Không nói thách khi bán hàng", "Theo luật", "Ít giao tiếp"],
+    correct: 1
+  },
+  {
+    question: "Khu vui chơi hiện đại lớn ở Đà Nẵng:",
+    options: ["Asia Park – Sun World", "Đầm Sen", "Suối Tiên", "VinWonders Nha Trang"],
+    correct: 0
+  },
+  {
+    question: "Sông chảy qua trung tâm Đà Nẵng:",
+    options: ["Sông Cổ Cò", "Sông Hàn", "Sông Thu Bồn", "Sông Trà Khúc"],
+    correct: 1
+  },
+  {
+    question: "Nghề truyền thống nổi bật của Hòa Vang:",
+    options: ["Đan lát", "Bánh tráng Túy Loan", "Gốm", "Lụa"],
+    correct: 1
+  },
+  {
+    question: "Đặc điểm giao thông Đà Nẵng nổi bật:",
+    options: ["Phức tạp", "Ít kẹt xe", "Đường nhỏ", "Không có cầu"],
+    correct: 1
+  },
+  {
+    question: "Thức uống quen thuộc của người Đà Nẵng:",
+    options: ["Trà đào", "Cà phê phin", "Nước ngọt", "Sinh tố xoài"],
+    correct: 1
+  },
+  {
+    question: "Nét đẹp của người Đà Nẵng trong cộng đồng:",
+    options: ["Tính hiếu khách", "Chỉ quan tâm bản thân", "Ít giúp đỡ người lạ", "Dè dặt"],
+    correct: 0
+  },
+  {
+    question: "Cầu Rồng phun lửa – nước vào thời gian:",
+    options: ["Tối thứ bảy & chủ nhật", "Mỗi tối", "Sáng thứ bảy", "Rằm hàng tháng"],
+    correct: 0
+  },
+  {
+    question: "Điểm ngắm thành phố từ trên cao đẹp nhất:",
+    options: ["Núi Ngự", "Bán đảo Sơn Trà", "Đèo Hải Vân", "Rạn Nam Ô"],
+    correct: 1
+  },
+  {
+    question: "Biển đẹp và đông khách nhất Đà Nẵng:",
+    options: ["Xuân Thiều", "Nam Ô", "Mỹ Khê", "Non Nước"],
     correct: 2
   },
   {
-    question: "Cầu Rồng được biết đến với khả năng gì?",
-    options: ["Thay đổi màu", "Quay 360 độ", "Phun lửa và nước", "Phun khói"],
-    correct: 2
+    question: "Người Đà Nẵng có phong cách sống đặc trưng:",
+    options: ["Giản dị, chân thật", "Phô trương", "Kiêu kỳ", "Thích hình thức"],
+    correct: 0
   },
   {
-    question: "Bán đảo Sơn Trà còn có tên gọi khác là:",
-    options: ["Núi Chúa", "Núi Khỉ", "Núi Bà Nà", "Núi Ngự"],
+    question: "Lễ hội đèn lồng Hội An thường rực rỡ nhất vào:",
+    options: ["Đêm Noel", "Rằm tháng Giêng", "Lễ 30/4", "Lễ 2/9"],
     correct: 1
-  },
-  {
-    question: "Công trình do người Pháp xây dựng tại Sơn Trà là:",
-    options: ["Hải Đăng Sơn Trà", "Bảo tàng Sa Huỳnh", "Nhà hát Trưng Vương", "Cầu Tiên Sơn"],
-    correct: 0
-  },
-  {
-    question: "Làng nghề Nam Ô nổi tiếng với:",
-    options: ["Chiếu cói", "Nước mắm", "Lụa", "Đồ gỗ"],
-    correct: 1
-  },
-  {
-    question: "Nhà thờ nổi tiếng lâu đời ở Đà Nẵng có biểu tượng con gà trên nóc:",
-    options: ["Chính tòa Đà Nẵng", "Mân Thái", "Hòa Cường", "An Ngãi"],
-    correct: 0
-  },
-  {
-    question: "Đà Nẵng được mệnh danh là:",
-    options: ["Thành phố của biển", "Thành phố đáng sống", "Thành phố ngàn hoa", "Thành phố xanh"],
-    correct: 1
-  },
-  {
-    question: "Khu di tích Ngũ Hành Sơn có bao nhiêu ngọn núi?",
-    options: ["3", "4", "5", "6"],
-    correct: 2
-  },
-  {
-    question: "Làng đá mỹ nghệ dưới chân Ngũ Hành Sơn tên gì?",
-    options: ["Non Nước", "Thạch Thất", "Phú Mỹ", "Tân Châu"],
-    correct: 0
-  },
-  {
-    question: "Chợ truyền thống lâu đời của Đà Nẵng:",
-    options: ["Chợ Hàn", "Chợ Cồn", "Chợ Bắc Mỹ An", "Chợ Đêm Sơn Trà"],
-    correct: 0
-  },
-  {
-    question: "Bảo tàng Đà Nẵng nằm ở con đường nào?",
-    options: ["Trần Phú", "Bạch Đằng", "Lê Duẩn", "2 Tháng 9"],
-    correct: 0
-  },
-  {
-    question: "Cổng trời ở Bà Nà Hills thuộc kiến trúc mô phỏng của:",
-    options: ["Hi Lạp", "Pháp", "Ý", "Anh"],
-    correct: 1
-  },
+  }
 ];
 
 // =============================
@@ -262,13 +288,12 @@ function showResult() {
 
   const totalPoints = correctCount * 10;
   let gift = "";
-    localStorage.setItem("done_ex1", true);
+  localStorage.setItem("done_ex3", true);
 
-
-  if (totalPoints >= 140) gift = "🎁 Quà VIP: Vé tham quan Bà Nà Hills";
-  else if (totalPoints >= 120) gift = "🎁 Quà lớn: Vé xem Cầu Rồng phun lửa + nước uống";
-  else if (totalPoints >= 100) gift = "🎁 Quà trung bình: Móc khóa Cầu Rồng";
-  else if (totalPoints >= 80) gift = "🎁 Quà nhỏ: Sticker Đà Nẵng";
+  if (totalPoints >= 200) gift = "🎁 Quà VIP: Vé tham quan Bà Nà Hills";
+  else if (totalPoints >= 180) gift = "🎁 Quà lớn: Vé xem Cầu Rồng phun lửa + nước uống";
+  else if (totalPoints >= 160) gift = "🎁 Quà trung bình: Móc khóa Cầu Rồng";
+  else if (totalPoints >= 140) gift = "🎁 Quà nhỏ: Sticker Đà Nẵng";
   else gift = "😢 Không đủ điểm đổi quà. Chúc may mắn bài sau!";
 
   // Ghi đè nội dung (không cộng dồn)
@@ -279,9 +304,7 @@ function showResult() {
     <p>${gift}</p>
     <div style="margin-top:16px;">
   `;
-  
 }
-
 </script>
 </body>
 </html>

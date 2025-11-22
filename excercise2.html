@@ -29,10 +29,10 @@
 <div id="giftIntro" style="max-width:700px;margin:auto;background:#fff;padding:15px;border-radius:10px;color:#444; text-align:center; font-size:18px;">
   <h2>🎁 Quà tặng hấp dẫn!</h2>
   <ul style="text-align:left;">
-    <li>≥ 140 điểm: <b>Vé Bà Nà Hills</b></li>
-    <br><li>≥ 120 điểm: <b>Vé xem Cầu Rồng phun lửa + nước</b></li>
-    <br><li>≥ 100 điểm: <b>Móc khóa Cầu Rồng</b></li>
-    <br><li>≥ 80 điểm: <b>Sticker Đà Nẵng</b></li>
+    <li>≥ 150 điểm: <b>Vé Bà Nà Hills</b></li>
+    <br><li>≥ 130 điểm: <b>Vé xem Cầu Rồng phun lửa + nước</b></li>
+    <br><li>≥ 110 điểm: <b>Móc khóa Cầu Rồng</b></li>
+    <br><li>≥ 90 điểm: <b>Sticker Đà Nẵng</b></li>
   </ul>
 </div>
 
@@ -66,80 +66,81 @@
 // DATA
 // =============================
 const questions = [
+  // --- Tín ngưỡng – lễ hội ---
   {
-    question: "Văn hóa Chămpa để lại dấu ấn lớn nhất ở di tích nào?",
-    options: ["Bà Nà", "Phố cổ", "Thánh địa Mỹ Sơn", "Cù Lao Chàm"],
+    question: "Lễ hội cầu ngư ở Đà Nẵng tổ chức nhằm:",
+    options: ["Cầu an cho gia đình", "Cầu mưa thuận gió hòa cho nông dân", "Cầu bình an, tôm cá đầy khoang cho ngư dân", "Cầu mùa màng bội thu"],
     correct: 2
   },
   {
-    question: "Bảo tàng điêu khắc nổi tiếng ở Đà Nẵng lưu giữ hiện vật của nền văn hóa nào?",
-    options: ["Sa Huỳnh", "Óc Eo", "Chămpa", "Khmer"],
+    question: "Lễ hội lớn tại Ngũ Hành Sơn diễn ra vào tháng Giêng là:",
+    options: ["Lễ hội Quan Thế Âm", "Lễ hội Cá Ông", "Lễ hội Hoa đăng", "Lễ hội đua thuyền"],
+    correct: 0
+  },
+  {
+    question: "Nghinh Ông là tín ngưỡng phổ biến ở cộng đồng:",
+    options: ["Người miền núi", "Ngư dân ven biển", "Người Khmer", "Người Hoa"],
+    correct: 1
+  },
+  {
+    question: "Lễ hội bắn pháo hoa quốc tế Đà Nẵng viết tắt là:",
+    options: ["DIFF", "DAFF", "DFF", "DFC"],
+    correct: 0
+  },
+  {
+    question: "Di tích tín ngưỡng trên bán đảo Sơn Trà được nhiều người đến viếng:",
+    options: ["Đền Hùng", "Chùa Linh Ứng", "Chùa Từ Đàm", "Miếu Bà"],
+    correct: 1
+  },
+  {
+    question: "Tượng Phật đứng tại Linh Ứng Sơn Trà cao khoảng:",
+    options: ["47m", "57m", "67m", "77m"],
     correct: 2
   },
   {
-    question: "“Thành Điện Hải” gắn với sự kiện lịch sử nào?",
-    options: ["Khởi nghĩa Lam Sơn", "Kháng chiến chống Pháp đầu thế kỷ XIX", "Phong trào Cần Vương", "Khởi nghĩa Tây Sơn"],
+    question: "Lễ hội truyền thống ở làng Túy Loan:",
+    options: ["Lễ hội cúng rừng", "Lễ hội đình làng Túy Loan", "Lễ hội rước sắc phong", "Lễ hội trâu rơm"],
     correct: 1
   },
   {
-    question: "Cầu quay sông Hàn khánh thành năm nào?",
-    options: ["1998", "1999", "2000", "2001"],
+    question: "Hoạt động thường có trong lễ hội cầu ngư:",
+    options: ["Đua thuyền", "Rước sắc phong", "Hát Bài Chòi", "Múa lân"],
+    correct: 0
+  },
+  {
+    question: "Tín ngưỡng thờ Cá Ông của Đà Nẵng gắn với hình ảnh:",
+    options: ["Cá voi", "Cá heo", "Cá mập", "Cá ngừ"],
+    correct: 0
+  },
+  {
+    question: "Lễ hội Quan Thế Âm diễn ra tại ngọn núi nào?",
+    options: ["Thủy Sơn", "Thổ Sơn", "Kim Sơn", "Mộc Sơn"],
     correct: 2
   },
   {
-    question: "Cầu Rồng được biết đến với khả năng gì?",
-    options: ["Thay đổi màu", "Quay 360 độ", "Phun lửa và nước", "Phun khói"],
+    question: "Nghi thức rước sắc phong thần ở Đà Nẵng xuất phát từ truyền thống:",
+    options: ["Người Việt cổ", "Triều đình phong kiến", "Người Chăm", "Người Hoa"],
+    correct: 1
+  },
+  {
+    question: "Lễ hội đua thuyền thường tổ chức vào dịp nào?",
+    options: ["Mồng 1 Tết", "Mồng 2 & 3 Tết", "30 Tết", "Rằm tháng 7"],
+    correct: 1
+  },
+  {
+    question: "Kèn ngư âm trong lễ hội cầu ngư dùng để:",
+    options: ["Gọi cá về", "Hòa tấu trong tế lễ", "Điều khiển ghe", "Dẫn đoàn rước"],
+    correct: 1
+  },
+  {
+    question: "Lễ hội tại đình Nam Ô được tổ chức để tưởng nhớ:",
+    options: ["Đức Thánh Trần", "Các vị tiền hiền", "Tổ nghề đá", "Nhà Trần"],
+    correct: 1
+  },
+  {
+    question: "Lễ hội đặc sắc thu hút khách quốc tế nhất tại Đà Nẵng là:",
+    options: ["Lễ hội Quan Thế Âm", "Lễ hội Cầu Ngư", "DIFF – Pháo hoa quốc tế", "Lễ hội Bà Thu Bồn"],
     correct: 2
-  },
-  {
-    question: "Bán đảo Sơn Trà còn có tên gọi khác là:",
-    options: ["Núi Chúa", "Núi Khỉ", "Núi Bà Nà", "Núi Ngự"],
-    correct: 1
-  },
-  {
-    question: "Công trình do người Pháp xây dựng tại Sơn Trà là:",
-    options: ["Hải Đăng Sơn Trà", "Bảo tàng Sa Huỳnh", "Nhà hát Trưng Vương", "Cầu Tiên Sơn"],
-    correct: 0
-  },
-  {
-    question: "Làng nghề Nam Ô nổi tiếng với:",
-    options: ["Chiếu cói", "Nước mắm", "Lụa", "Đồ gỗ"],
-    correct: 1
-  },
-  {
-    question: "Nhà thờ nổi tiếng lâu đời ở Đà Nẵng có biểu tượng con gà trên nóc:",
-    options: ["Chính tòa Đà Nẵng", "Mân Thái", "Hòa Cường", "An Ngãi"],
-    correct: 0
-  },
-  {
-    question: "Đà Nẵng được mệnh danh là:",
-    options: ["Thành phố của biển", "Thành phố đáng sống", "Thành phố ngàn hoa", "Thành phố xanh"],
-    correct: 1
-  },
-  {
-    question: "Khu di tích Ngũ Hành Sơn có bao nhiêu ngọn núi?",
-    options: ["3", "4", "5", "6"],
-    correct: 2
-  },
-  {
-    question: "Làng đá mỹ nghệ dưới chân Ngũ Hành Sơn tên gì?",
-    options: ["Non Nước", "Thạch Thất", "Phú Mỹ", "Tân Châu"],
-    correct: 0
-  },
-  {
-    question: "Chợ truyền thống lâu đời của Đà Nẵng:",
-    options: ["Chợ Hàn", "Chợ Cồn", "Chợ Bắc Mỹ An", "Chợ Đêm Sơn Trà"],
-    correct: 0
-  },
-  {
-    question: "Bảo tàng Đà Nẵng nằm ở con đường nào?",
-    options: ["Trần Phú", "Bạch Đằng", "Lê Duẩn", "2 Tháng 9"],
-    correct: 0
-  },
-  {
-    question: "Cổng trời ở Bà Nà Hills thuộc kiến trúc mô phỏng của:",
-    options: ["Hi Lạp", "Pháp", "Ý", "Anh"],
-    correct: 1
   },
 ];
 
@@ -262,13 +263,12 @@ function showResult() {
 
   const totalPoints = correctCount * 10;
   let gift = "";
-    localStorage.setItem("done_ex1", true);
+  localStorage.setItem("done_ex2", true);
 
-
-  if (totalPoints >= 140) gift = "🎁 Quà VIP: Vé tham quan Bà Nà Hills";
-  else if (totalPoints >= 120) gift = "🎁 Quà lớn: Vé xem Cầu Rồng phun lửa + nước uống";
-  else if (totalPoints >= 100) gift = "🎁 Quà trung bình: Móc khóa Cầu Rồng";
-  else if (totalPoints >= 80) gift = "🎁 Quà nhỏ: Sticker Đà Nẵng";
+  if (totalPoints >= 150) gift = "🎁 Quà VIP: Vé tham quan Bà Nà Hills";
+  else if (totalPoints >= 130) gift = "🎁 Quà lớn: Vé xem Cầu Rồng phun lửa + nước uống";
+  else if (totalPoints >= 110) gift = "🎁 Quà trung bình: Móc khóa Cầu Rồng";
+  else if (totalPoints >= 90) gift = "🎁 Quà nhỏ: Sticker Đà Nẵng";
   else gift = "😢 Không đủ điểm đổi quà. Chúc may mắn bài sau!";
 
   // Ghi đè nội dung (không cộng dồn)
@@ -279,9 +279,7 @@ function showResult() {
     <p>${gift}</p>
     <div style="margin-top:16px;">
   `;
-  
 }
-
 </script>
 </body>
 </html>

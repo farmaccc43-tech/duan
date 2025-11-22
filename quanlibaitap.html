@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Danh sách bài tập</title>
+  <style>
+    body{font-family:Arial, sans-serif;margin:0;padding:30px;background:#f3f6fb}
+    h1{text-align:center;margin-bottom:30px;font-size:28px;font-weight:700}
+    .container{max-width:1100px;margin:0 auto;}
+
+    .card-wrap{
+      display:flex;
+      gap:20px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .card{
+      background:#fff;
+      width:300px;
+      padding:20px;
+      border-radius:14px;
+      box-shadow:0 2px 10px rgba(0,0,0,0.08);
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      transition:0.2s ease;
+    }
+
+    .card.disabled{
+      opacity:0.45;
+      pointer-events:none;
+    }
+
+    .card-title{font-size:18px;font-weight:bold}
+
+    .status{
+      font-size:14px;
+      font-weight:bold;
+      color:green;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:8px 14px;
+      border-radius:8px;
+      border:1px solid #0d47a1;
+      color:#0d47a1;
+      text-decoration:none;
+      width:max-content;
+      font-size:14px;
+      margin-top:5px;
+      transition:0.2s;
+    }
+
+    .btn.disabled{
+      color:#888;
+      border-color:#ccc;
+      pointer-events:none;
+    }
+
+    .back{display:inline-block;margin-bottom:20px;color:#0d47a1;text-decoration:none;font-weight:bold}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <a href="home.html" class="back">← Quay lại trang chủ</a>
+    <h1>📘 Danh sách bài tập</h1>
+
+    <div class="card-wrap">
+      <!-- Bài 1 -->
+      <div class="card" id="ex1">
+        <div class="card-title">A. Văn hoá – lịch sử Đà Nẵng (1–15)</div>
+        <span class="status" id="st1"></span>
+        <a href="excercise.html" class="btn" id="btn1">Vào học</a>
+      </div>
+
+      <!-- Bài 2 -->
+      <div class="card" id="ex2">
+        <div class="card-title">B. Tín ngưỡng – lễ hội Đà Nẵng (16–30)</div>
+        <span class="status" id="st2"></span>
+        <a href="excercise2.html" class="btn" id="btn2">Vào học</a>
+      </div>
+
+      <!-- Bài 3 -->
+      <div class="card" id="ex3">
+        <div class="card-title">C. Đời sống – ẩm thực – con người Đà Nẵng (31–50)</div>
+        <span class="status" id="st3"></span>
+        <a href="excercise3.html" class="btn" id="btn3">Vào học</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Hàm kiểm tra và khóa bài
+    function checkCompleted(id, cardId, statusId, btnId){
+      if(localStorage.getItem(id)){
+        document.getElementById(cardId).classList.add("disabled");
+        document.getElementById(btnId).classList.add("disabled");
+        document.getElementById(statusId).innerText = "✔ Đã hoàn thành";
+      }
+    }
+
+    checkCompleted("done_ex1", "ex1", "st1", "btn1");
+    checkCompleted("done_ex2", "ex2", "st2", "btn2");
+    checkCompleted("done_ex3", "ex3", "st3", "btn3");
+  </script>
+
+</body>
+</html>
+
