@@ -19,11 +19,22 @@
   .result-box span { font-size: 24px; font-weight: bold; }
   .btn{padding: 50px;}
   .btn a{ background-color: rgb(30, 42, 210); padding: 20px; border-radius: 10px;text-decoration: none; color:white}
+  #startBtn { display:block; margin:20px auto; padding:12px 24px; font-size:18px; border-radius:10px; cursor:pointer; }
+  #countDown { display:none; font-size:70px; text-align:center; margin-top:50px; font-weight:bold;color:#e91e63; }
 </style>
 </head>
 <body>
 
 <h1>Trắc nghiệm Đà Nẵng</h1>
+<div id="giftIntro" style="max-width:700px;margin:auto;background:#fff;padding:15px;border-radius:10px;color:#444; text-align:center; font-size:18px;">
+  <h2>🎁 Quà tặng hấp dẫn!</h2>
+  <ul style="text-align:left;">
+    <li>≥ 250 điểm: <b>Vé Bà Nà Hills</b></li>
+    <br><li>≥ 200 điểm: <b>Vé xem Cầu Rồng phun lửa + nước</b></li>
+    <br><li>≥ 150 điểm: <b>Móc khóa Cầu Rồng</b></li>
+    <br><li>≥ 100 điểm: <b>Sticker Đà Nẵng</b></li>
+  </ul>
+</div>
 
 <!-- Vùng quiz -->
 <div class="quiz-box" id="quizBox">
@@ -40,9 +51,19 @@
 <div class="btn">
   <a href="home.html">Quay Về Trang Chủ</a>
 </div>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div id="countDown"></div>
+
+<!-- Start button: có id để ẩn đúng nút -->
+<button id="startBtn" onclick="startGame()">Start</button>
+
 <script>
 // =============================
-// 1) DANH SÁCH CÂU HỎI (bạn chỉ cần thêm vào đây)
+// DATA
 // =============================
 const questions = [
   {
@@ -299,9 +320,8 @@ const questions = [
   }
 ];
 
-
 // =============================
-// 2) BIẾN & PHẦN TỬ HTML
+// ELEMENTS & STATE
 // =============================
 let currentIndex = 0;
 let correctCount = 0;
@@ -314,9 +334,51 @@ const resultBox = document.getElementById("resultBox");
 const quizBox = document.getElementById("quizBox");
 const correctText = document.getElementById("correctText");
 const wrongText = document.getElementById("wrongText");
+const startBtn = document.getElementById("startBtn");
+const cdEl = document.getElementById("countDown");
+const giftIntro = document.getElementById("giftIntro");
+
+// ẩn quiz ban đầu
+quizBox.style.display = "none";
 
 // =============================
-// 3) HIỂN THỊ CÂU HỎI
+// START GAME / COUNTDOWN
+// =============================
+function startGame() {
+  // ẩn chỉ đúng nút Start + ẩn phần quà giới thiệu
+  startBtn.style.display = "none";
+  giftIntro.style.display = "none";
+
+  // thử bật nhạc nếu người dùng đã tương tác (trình duyệt chặn autoplay nếu không có tương tác)
+  const music = document.getElementById("bgMusic");
+  music.play().catch(()=>{ /* nếu bị chặn, không quan trọng */ });
+
+  startCountDown();
+}
+
+function startCountDown() {
+  cdEl.style.display = "block";
+  let time = 3;
+  cdEl.textContent = time;
+
+  const timer = setInterval(() => {
+    time--;
+    cdEl.textContent = time > 0 ? time : "GO!";
+    if (time < 0) {
+      clearInterval(timer);
+      cdEl.style.display = "none";
+      // Hiện quiz và load câu hỏi đầu tiên
+      quizBox.style.display = "block";
+      currentIndex = 0;
+      correctCount = 0;
+      wrongCount = 0;
+      loadQuestion();
+    }
+  }, 1000);
+}
+
+// =============================
+// HIỂN THỊ CÂU HỎI
 // =============================
 function loadQuestion() {
   const q = questions[currentIndex];
@@ -336,7 +398,7 @@ function loadQuestion() {
 }
 
 // =============================
-// 4) CHỌN ĐÁP ÁN
+// CHỌN ĐÁP ÁN
 // =============================
 function selectAnswer(choice) {
   const q = questions[currentIndex];
@@ -347,14 +409,15 @@ function selectAnswer(choice) {
   const allBtns = document.querySelectorAll(".answer-btn");
   allBtns.forEach((b) => (b.disabled = true));
 
-  allBtns[q.correct].classList.add("correct");
-  if (choice !== q.correct) allBtns[choice].classList.add("wrong");
+  // mark đúng/sai (an toàn kiểm tra chỉ khi tồn tại index)
+  if (allBtns[q.correct]) allBtns[q.correct].classList.add("correct");
+  if (choice !== q.correct && allBtns[choice]) allBtns[choice].classList.add("wrong");
 
   nextBtn.disabled = false;
 }
 
 // =============================
-// 5) NÚT TIẾP THEO / NỘP BÀI
+// NÚT TIẾP / NỘP BÀI
 // =============================
 nextBtn.onclick = () => {
   if (currentIndex < questions.length - 1) {
@@ -366,16 +429,34 @@ nextBtn.onclick = () => {
 };
 
 // =============================
-// 6) HIỂN THỊ KẾT QUẢ
+// HIỂN THỊ KẾT QUẢ
 // =============================
 function showResult() {
   quizBox.style.display = "none";
   resultBox.style.display = "block";
   correctText.textContent = correctCount;
   wrongText.textContent = wrongCount;
-}
 
-loadQuestion();
+  const totalPoints = correctCount * 10;
+  let gift = "";
+
+  if (totalPoints >= 250) gift = "🎁 Quà VIP: Vé tham quan Bà Nà Hills";
+  else if (totalPoints >= 200) gift = "🎁 Quà lớn: Vé xem Cầu Rồng phun lửa + nước uống";
+  else if (totalPoints >= 150) gift = "🎁 Quà trung bình: Móc khóa Cầu Rồng";
+  else if (totalPoints >= 100) gift = "🎁 Quà nhỏ: Sticker Đà Nẵng";
+  else gift = "😢 Không đủ điểm đổi quà. Hãy thử lại!";
+
+  // Ghi đè nội dung (không cộng dồn)
+  resultBox.innerHTML = `
+    <p>Bạn trả lời đúng: <span id="correctText">${correctCount}</span> câu</p>
+    <p>Bạn trả lời sai: <span id="wrongText">${wrongCount}</span> câu</p>
+    <p>Tổng điểm của bạn: <span style="font-size:28px; color:#e91e63">${totalPoints}</span></p>
+    <p>${gift}</p>
+    <div style="margin-top:16px;">
+      <button onclick="location.reload()" style="padding:10px 16px; border-radius:8px;">Chơi lại</button>
+    </div>
+  `;
+}
 </script>
 </body>
 </html>
