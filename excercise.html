@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trắc nghiệm Đà Nẵng</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f3f3f3; margin: 0; padding: 20px; }
+  h1 { text-align: center; color: #333; }
+  .quiz-box { max-width: 700px; margin: auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+  .answers { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
+  .answer-btn { padding: 12px; font-size: 17px; border-radius: 12px; border: 2px solid #ccc; background: #f5f5f5; cursor: pointer; transition: 0.25s; }
+  .answer-btn:hover { background: #e8e8e8; }
+  .answer-btn.correct { background: #4CAF50; color: white; border-color: #4CAF50; }
+  .answer-btn.wrong { background: #e53935; color: white; border-color: #e53935; }
+  #nextBtn { margin-top: 20px; width: 100%; padding: 14px; font-size: 18px; border: none; border-radius: 12px; background: #2196F3; color: white; cursor: pointer; transition: 0.25s; }
+  #nextBtn:disabled { background: #90caf9; cursor: not-allowed; }
+  .result-box { display: none; text-align: center; font-size: 20px; }
+  .result-box span { font-size: 24px; font-weight: bold; }
+  .btn{padding: 50px;}
+  .btn a{ background-color: rgb(30, 42, 210); padding: 20px; border-radius: 10px;text-decoration: none; color:white}
+</style>
+</head>
+<body>
+
+<h1>Trắc nghiệm Đà Nẵng</h1>
+
+<!-- Vùng quiz -->
+<div class="quiz-box" id="quizBox">
+  <div id="questionText" style="font-size: 22px; font-weight: bold;"></div>
+  <div id="answersBox" class="answers"></div>
+  <button id="nextBtn">Tiếp</button>
+</div>
+
+<!-- Vùng kết quả -->
+<div class="result-box" id="resultBox">
+  <p>Bạn trả lời đúng: <span id="correctText">0</span> câu</p>
+  <p>Bạn trả lời sai: <span id="wrongText">0</span> câu</p>
+</div>
+<div class="btn">
+  <a href="home.html">Quay Về Trang Chủ</a>
+</div>
+<script>
+// =============================
+// 1) DANH SÁCH CÂU HỎI (bạn chỉ cần thêm vào đây)
+// =============================
+const questions = [
+  {
+    question: "Văn hóa Chămpa để lại dấu ấn lớn nhất ở di tích nào?",
+    options: ["Bà Nà", "Phố cổ", "Thánh địa Mỹ Sơn", "Cù Lao Chàm"],
+    correct: 2
+  },
+  {
+    question: "Bảo tàng điêu khắc nổi tiếng ở Đà Nẵng lưu giữ hiện vật của nền văn hóa nào?",
+    options: ["Sa Huỳnh", "Óc Eo", "Chămpa", "Khmer"],
+    correct: 2
+  },
+  {
+    question: "“Thành Điện Hải” gắn với sự kiện lịch sử nào?",
+    options: ["Khởi nghĩa Lam Sơn", "Kháng chiến chống Pháp đầu thế kỷ XIX", "Phong trào Cần Vương", "Khởi nghĩa Tây Sơn"],
+    correct: 1
+  },
+  {
+    question: "Cầu quay sông Hàn khánh thành năm nào?",
+    options: ["1998", "1999", "2000", "2001"],
+    correct: 2
+  },
+  {
+    question: "Cầu Rồng được biết đến với khả năng gì?",
+    options: ["Thay đổi màu", "Quay 360 độ", "Phun lửa và nước", "Phun khói"],
+    correct: 2
+  },
+  {
+    question: "Bán đảo Sơn Trà còn có tên gọi khác là:",
+    options: ["Núi Chúa", "Núi Khỉ", "Núi Bà Nà", "Núi Ngự"],
+    correct: 1
+  },
+  {
+    question: "Công trình do người Pháp xây dựng tại Sơn Trà là:",
+    options: ["Hải Đăng Sơn Trà", "Bảo tàng Sa Huỳnh", "Nhà hát Trưng Vương", "Cầu Tiên Sơn"],
+    correct: 0
+  },
+  {
+    question: "Làng nghề Nam Ô nổi tiếng với:",
+    options: ["Chiếu cói", "Nước mắm", "Lụa", "Đồ gỗ"],
+    correct: 1
+  },
+  {
+    question: "Nhà thờ nổi tiếng lâu đời ở Đà Nẵng có biểu tượng con gà trên nóc:",
+    options: ["Chính tòa Đà Nẵng", "Mân Thái", "Hòa Cường", "An Ngãi"],
+    correct: 0
+  },
+  {
+    question: "Đà Nẵng được mệnh danh là:",
+    options: ["Thành phố của biển", "Thành phố đáng sống", "Thành phố ngàn hoa", "Thành phố xanh"],
+    correct: 1
+  },
+  {
+    question: "Khu di tích Ngũ Hành Sơn có bao nhiêu ngọn núi?",
+    options: ["3", "4", "5", "6"],
+    correct: 2
+  },
+  {
+    question: "Làng đá mỹ nghệ dưới chân Ngũ Hành Sơn tên gì?",
+    options: ["Non Nước", "Thạch Thất", "Phú Mỹ", "Tân Châu"],
+    correct: 0
+  },
+  {
+    question: "Chợ truyền thống lâu đời của Đà Nẵng:",
+    options: ["Chợ Hàn", "Chợ Cồn", "Chợ Bắc Mỹ An", "Chợ Đêm Sơn Trà"],
+    correct: 0
+  },
+  {
+    question: "Bảo tàng Đà Nẵng nằm ở con đường nào?",
+    options: ["Trần Phú", "Bạch Đằng", "Lê Duẩn", "2 Tháng 9"],
+    correct: 0
+  },
+  {
+    question: "Cổng trời ở Bà Nà Hills thuộc kiến trúc mô phỏng của:",
+    options: ["Hi Lạp", "Pháp", "Ý", "Anh"],
+    correct: 1
+  },
+  // --- Tín ngưỡng – lễ hội ---
+  {
+    question: "Lễ hội cầu ngư ở Đà Nẵng tổ chức nhằm:",
+    options: ["Cầu an cho gia đình", "Cầu mưa thuận gió hòa cho nông dân", "Cầu bình an, tôm cá đầy khoang cho ngư dân", "Cầu mùa màng bội thu"],
+    correct: 2
+  },
+  {
+    question: "Lễ hội lớn tại Ngũ Hành Sơn diễn ra vào tháng Giêng là:",
+    options: ["Lễ hội Quan Thế Âm", "Lễ hội Cá Ông", "Lễ hội Hoa đăng", "Lễ hội đua thuyền"],
+    correct: 0
+  },
+  {
+    question: "Nghinh Ông là tín ngưỡng phổ biến ở cộng đồng:",
+    options: ["Người miền núi", "Ngư dân ven biển", "Người Khmer", "Người Hoa"],
+    correct: 1
+  },
+  {
+    question: "Lễ hội bắn pháo hoa quốc tế Đà Nẵng viết tắt là:",
+    options: ["DIFF", "DAFF", "DFF", "DFC"],
+    correct: 0
+  },
+  {
+    question: "Di tích tín ngưỡng trên bán đảo Sơn Trà được nhiều người đến viếng:",
+    options: ["Đền Hùng", "Chùa Linh Ứng", "Chùa Từ Đàm", "Miếu Bà"],
+    correct: 1
+  },
+  {
+    question: "Tượng Phật đứng tại Linh Ứng Sơn Trà cao khoảng:",
+    options: ["47m", "57m", "67m", "77m"],
+    correct: 2
+  },
+  {
+    question: "Lễ hội truyền thống ở làng Túy Loan:",
+    options: ["Lễ hội cúng rừng", "Lễ hội đình làng Túy Loan", "Lễ hội rước sắc phong", "Lễ hội trâu rơm"],
+    correct: 1
+  },
+  {
+    question: "Hoạt động thường có trong lễ hội cầu ngư:",
+    options: ["Đua thuyền", "Rước sắc phong", "Hát Bài Chòi", "Múa lân"],
+    correct: 0
+  },
+  {
+    question: "Tín ngưỡng thờ Cá Ông của Đà Nẵng gắn với hình ảnh:",
+    options: ["Cá voi", "Cá heo", "Cá mập", "Cá ngừ"],
+    correct: 0
+  },
+  {
+    question: "Lễ hội Quan Thế Âm diễn ra tại ngọn núi nào?",
+    options: ["Thủy Sơn", "Thổ Sơn", "Kim Sơn", "Mộc Sơn"],
+    correct: 2
+  },
+  {
+    question: "Nghi thức rước sắc phong thần ở Đà Nẵng xuất phát từ truyền thống:",
+    options: ["Người Việt cổ", "Triều đình phong kiến", "Người Chăm", "Người Hoa"],
+    correct: 1
+  },
+  {
+    question: "Lễ hội đua thuyền thường tổ chức vào dịp nào?",
+    options: ["Mồng 1 Tết", "Mồng 2 & 3 Tết", "30 Tết", "Rằm tháng 7"],
+    correct: 1
+  },
+  {
+    question: "Kèn ngư âm trong lễ hội cầu ngư dùng để:",
+    options: ["Gọi cá về", "Hòa tấu trong tế lễ", "Điều khiển ghe", "Dẫn đoàn rước"],
+    correct: 1
+  },
+  {
+    question: "Lễ hội tại đình Nam Ô được tổ chức để tưởng nhớ:",
+    options: ["Đức Thánh Trần", "Các vị tiền hiền", "Tổ nghề đá", "Nhà Trần"],
+    correct: 1
+  },
+  {
+    question: "Lễ hội đặc sắc thu hút khách quốc tế nhất tại Đà Nẵng là:",
+    options: ["Lễ hội Quan Thế Âm", "Lễ hội Cầu Ngư", "DIFF – Pháo hoa quốc tế", "Lễ hội Bà Thu Bồn"],
+    correct: 2
+  },
+  // --- Đời sống – ẩm thực – con người ---
+  {
+    question: "Người Đà Nẵng được nhận xét là:",
+    options: ["Khó tính", "Cởi mở, thân thiện", "Ít nói", "Khép kín"],
+    correct: 1
+  },
+  {
+    question: "Nét giao tiếp đặc trưng của người Đà Nẵng:",
+    options: ["Nói vòng vo", "Ngắn gọn, thẳng thắn", "Trầm lặng", "Phô trương"],
+    correct: 1
+  },
+  {
+    question: "Món ăn nổi tiếng gắn với làng Nam Ô:",
+    options: ["Gỏi cá", "Chả bò", "Bún chả", "Bánh căn"],
+    correct: 0
+  },
+  {
+    question: "Đặc sản bánh tráng cuốn thịt heo thường ăn kèm:",
+    options: ["Mắm nêm", "Tương đen", "Mắm ruốc", "Nước tương"],
+    correct: 0
+  },
+  {
+    question: "Bánh xèo miền Trung ở Đà Nẵng có đặc điểm:",
+    options: ["Bánh to dày", "Bánh mỏng giòn", "Bánh nhân hải sản", "Bánh ngọt"],
+    correct: 1
+  },
+  {
+    question: "Người Đà Nẵng thường có thói quen sống:",
+    options: ["Nhanh, vội", "Điều độ, kỷ luật", "Bừa bộn", "Tự phát"],
+    correct: 1
+  },
+  {
+    question: "Chợ nào nổi tiếng với ẩm thực ngon – rẻ?",
+    options: ["Chợ Hàn", "Chợ Cồn", "Chợ Đầu Mối", "Chợ đêm Helio"],
+    correct: 1
+  },
+  {
+    question: "Món “mỳ Quảng” thường được ăn với:",
+    options: ["Nước dùng chan nhiều", "Gà, tôm, thịt, đậu phộng", "Bún", "Nui"],
+    correct: 1
+  },
+  {
+    question: "Người Đà Nẵng thường được đánh giá là trung thực vì:",
+    options: ["Không nói dối", "Không nói thách khi bán hàng", "Theo luật", "Ít giao tiếp"],
+    correct: 1
+  },
+  {
+    question: "Khu vui chơi hiện đại lớn ở Đà Nẵng:",
+    options: ["Asia Park – Sun World", "Đầm Sen", "Suối Tiên", "VinWonders Nha Trang"],
+    correct: 0
+  },
+  {
+    question: "Sông chảy qua trung tâm Đà Nẵng:",
+    options: ["Sông Cổ Cò", "Sông Hàn", "Sông Thu Bồn", "Sông Trà Khúc"],
+    correct: 1
+  },
+  {
+    question: "Nghề truyền thống nổi bật của Hòa Vang:",
+    options: ["Đan lát", "Bánh tráng Túy Loan", "Gốm", "Lụa"],
+    correct: 1
+  },
+  {
+    question: "Đặc điểm giao thông Đà Nẵng nổi bật:",
+    options: ["Phức tạp", "Ít kẹt xe", "Đường nhỏ", "Không có cầu"],
+    correct: 1
+  },
+  {
+    question: "Thức uống quen thuộc của người Đà Nẵng:",
+    options: ["Trà đào", "Cà phê phin", "Nước ngọt", "Sinh tố xoài"],
+    correct: 1
+  },
+  {
+    question: "Nét đẹp của người Đà Nẵng trong cộng đồng:",
+    options: ["Tính hiếu khách", "Chỉ quan tâm bản thân", "Ít giúp đỡ người lạ", "Dè dặt"],
+    correct: 0
+  },
+  {
+    question: "Cầu Rồng phun lửa – nước vào thời gian:",
+    options: ["Tối thứ bảy & chủ nhật", "Mỗi tối", "Sáng thứ bảy", "Rằm hàng tháng"],
+    correct: 0
+  },
+  {
+    question: "Điểm ngắm thành phố từ trên cao đẹp nhất:",
+    options: ["Núi Ngự", "Bán đảo Sơn Trà", "Đèo Hải Vân", "Rạn Nam Ô"],
+    correct: 1
+  },
+  {
+    question: "Biển đẹp và đông khách nhất Đà Nẵng:",
+    options: ["Xuân Thiều", "Nam Ô", "Mỹ Khê", "Non Nước"],
+    correct: 2
+  },
+  {
+    question: "Người Đà Nẵng có phong cách sống đặc trưng:",
+    options: ["Giản dị, chân thật", "Phô trương", "Kiêu kỳ", "Thích hình thức"],
+    correct: 0
+  },
+  {
+    question: "Lễ hội đèn lồng Hội An thường rực rỡ nhất vào:",
+    options: ["Đêm Noel", "Rằm tháng Giêng", "Lễ 30/4", "Lễ 2/9"],
+    correct: 1
+  }
+];
+
+
+// =============================
+// 2) BIẾN & PHẦN TỬ HTML
+// =============================
+let currentIndex = 0;
+let correctCount = 0;
+let wrongCount = 0;
+
+const questionText = document.getElementById("questionText");
+const answersBox = document.getElementById("answersBox");
+const nextBtn = document.getElementById("nextBtn");
+const resultBox = document.getElementById("resultBox");
+const quizBox = document.getElementById("quizBox");
+const correctText = document.getElementById("correctText");
+const wrongText = document.getElementById("wrongText");
+
+// =============================
+// 3) HIỂN THỊ CÂU HỎI
+// =============================
+function loadQuestion() {
+  const q = questions[currentIndex];
+  questionText.textContent = `Câu ${currentIndex + 1}: ${q.question}`;
+
+  answersBox.innerHTML = "";
+  q.options.forEach((opt, i) => {
+    const btn = document.createElement("button");
+    btn.className = "answer-btn";
+    btn.textContent = opt;
+    btn.onclick = () => selectAnswer(i);
+    answersBox.appendChild(btn);
+  });
+
+  nextBtn.disabled = true;
+  nextBtn.textContent = currentIndex === questions.length - 1 ? "Nộp bài" : "Câu tiếp";
+}
+
+// =============================
+// 4) CHỌN ĐÁP ÁN
+// =============================
+function selectAnswer(choice) {
+  const q = questions[currentIndex];
+
+  if (choice === q.correct) correctCount++;
+  else wrongCount++;
+
+  const allBtns = document.querySelectorAll(".answer-btn");
+  allBtns.forEach((b) => (b.disabled = true));
+
+  allBtns[q.correct].classList.add("correct");
+  if (choice !== q.correct) allBtns[choice].classList.add("wrong");
+
+  nextBtn.disabled = false;
+}
+
+// =============================
+// 5) NÚT TIẾP THEO / NỘP BÀI
+// =============================
+nextBtn.onclick = () => {
+  if (currentIndex < questions.length - 1) {
+    currentIndex++;
+    loadQuestion();
+  } else {
+    showResult();
+  }
+};
+
+// =============================
+// 6) HIỂN THỊ KẾT QUẢ
+// =============================
+function showResult() {
+  quizBox.style.display = "none";
+  resultBox.style.display = "block";
+  correctText.textContent = correctCount;
+  wrongText.textContent = wrongCount;
+}
+
+loadQuestion();
+</script>
+</body>
+</html>

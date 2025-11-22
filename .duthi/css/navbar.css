@@ -1,7 +1,7 @@
 
 .logo {
   color:black;
-  display:inline-lock;
+  display:inline-block;
 }
 .header {
 	background-color: #2a73f6; !important;
@@ -48,7 +48,7 @@
 	clear: both;
 	max-height: 0;
 	transition: max-height .2s ease-out;
-	height: 95px;
+	height: 50px;
 }
 
 /* menu icon */
